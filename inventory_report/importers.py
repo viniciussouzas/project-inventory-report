@@ -18,12 +18,12 @@ class JsonImporter(Importer):
         super().__init__(path)
 
     def import_data(self) -> list[Product]:
-        answer = []
+        list_product = []
         with open(self.path, 'r') as file:
             products = json.load(file)
 
         for product in products:
-            answer.append(Product(
+            list_product.append(Product(
                 product["id"],
                 product["product_name"],
                 product["company_name"],
@@ -32,7 +32,7 @@ class JsonImporter(Importer):
                 product["serial_number"],
                 product["storage_instructions"],
             ))
-        return answer
+        return list_product
 
 
 class CsvImporter:
